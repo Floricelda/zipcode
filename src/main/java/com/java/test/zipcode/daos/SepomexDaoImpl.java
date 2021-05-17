@@ -3,6 +3,7 @@
  */
 package com.java.test.zipcode.daos;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityManager;
@@ -45,16 +46,17 @@ public class SepomexDaoImpl implements SepomexDao {
 
 	private ResponseModel maptoObject(List<Object[]> param) {
 		ResponseModel object= new ResponseModel();
+		object.setListSettlements(new ArrayList<Settlements>());
 		for (Object[] a : param) {
-			object.setZip_code(a[0].toString());
-			object.setLocality(a[1].toString());
-			object.setFederal_entity(a[2].toString());
+			object.setZip_code(a[0]!= null?a[0].toString():"");
+			object.setLocality(a[1]!=null?a[1].toString():"");
+			object.setFederal_entity(a[2]!=null?a[2].toString():"");
 			Settlements settlements= new Settlements();
-			settlements.setName(a[3].toString());
-			settlements.setZone_type(a[4].toString());
-			settlements.setSettlement_type(a[5].toString());
-			object.setSettlements(settlements);
-			object.setMunicipality(a[6].toString());
+			settlements.setName(a[3]!= null?a[3].toString():"");
+			settlements.setZone_type(a[4]!= null?a[4].toString():"");
+			settlements.setSettlement_type(a[5]!=null?a[5].toString():"");
+			object.getListSettlements().add(settlements);
+			object.setMunicipality(a[6]!=null?a[6].toString():"");
 		}
 		return object;
 	}

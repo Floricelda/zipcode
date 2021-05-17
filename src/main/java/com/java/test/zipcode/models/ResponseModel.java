@@ -1,4 +1,7 @@
 package com.java.test.zipcode.models;
+
+import java.util.List;
+
 /***************************************************************************************************************/
 /* Date: 16/05/2021
  * Author: Floricelda Cabrera Santos
@@ -9,9 +12,15 @@ public class ResponseModel {
 	private String zip_code;
 	private String locality;
 	private String federal_entity;
-	private Settlements settlements;
+	private List<Settlements> listSettlements;
 	private String municipality;
 	
+	public List<Settlements> getListSettlements() {
+		return listSettlements;
+	}
+	public void setListSettlements(List<Settlements> listSettlements) {
+		this.listSettlements = listSettlements;
+	}
 	public ResponseModel() {
 
 	}
@@ -33,12 +42,7 @@ public class ResponseModel {
 	public void setFederal_entity(String federal_entity) {
 		this.federal_entity = federal_entity;
 	}
-	public Settlements getSettlements() {
-		return settlements;
-	}
-	public void setSettlements(Settlements settlements) {
-		this.settlements = settlements;
-	}
+
 	public String getMunicipality() {
 		return municipality;
 	}
